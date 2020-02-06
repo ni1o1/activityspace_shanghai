@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	  <script src="js/jquery.min.js"></script>
+       <script type="text/javascript" src="js/echarts-all-3.js"></script>
+       <script type="text/javascript" src="js/dataTool.min.js"></script>
+       <script type="text/javascript" src='js/main.js'></script>	   
+	   <link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+  
+           <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/flick/jquery-ui.css">
+
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+
+
+<link href="css/style.css" rel="stylesheet" media="screen" type="text/css" />
+
+<script>  
+$(document).ready(function(){  
+    //初始化宽度、高度  
+	if ($(window).height()>800)
+	{
+	var atop = ($(window).height()-800)/2
+	}
+	$(".conter").css("top",atop+"px");
+    });
+</script>  
+</head>
+<body>
+<div id="cont" style="position:absolute;height:100%;width:100%;left:0px">
+<input class="btn btn-info" id ='jietu' type="button" value="截图保存" style="position:absolute;top:5px;right:20px;z-index:10">
+<div id="container" style="position:relative;height:100%;width:100%;left:0px"></div>
+<input class="btn btn-info" id ='activityspace' type="button" value="该地活动者居住地" style="display: none;position:absolute;top:290px;height:30px;left:10px;width:120px;z-index:10">
+<input class="btn btn-info" id ='activityspace2' type="button" value="居民活动空间" style="display: none;position:absolute;top:200px;height:30px;left:10px;width:120px;z-index:10">
+<input class="btn btn-info" id ='activityspace3' type="button" value="居民就业活动点" style="display: none;position:absolute;top:230px;height:30px;left:10px;width:120px;z-index:10">
+<input class="btn btn-info" id ='activityspace4' type="button" value="居民休憩活动点" style="display: none;position:absolute;top:260px;height:30px;left:10px;width:120px;z-index:10">
+
+<div class="CarInfo" style="position:absolute;left: 5px; top: 55px;z-index:2;"> 
+		<span class="Line" style="font-family:微软雅黑;color:rgb(18,89,147);font-weight:bold;">选择属性
+				<select > 
+				</select> 
+		</span> 
+		</div> 
+			<div id="visualmapselect" style="display: none;position:absolute;left: 5px; top: 85px;z-index:2;"> 
+		<span class="Line2" style="font-family:微软雅黑;color:rgb(18,89,147);font-weight:bold;">显示模式
+				<select > 
+				<option value=continuous>连续</option>
+				<option value=piecewise>分组</option>
+				</select> 
+		</span> 
+		</div> 
+					<div id="visualmapgroups" style="display: none;position:absolute;left: 5px; top: 115px;z-index:2;"> 
+		<span class="Line3" style="font-family:微软雅黑;color:rgb(18,89,147);font-weight:bold;">分组数
+				<select > 
+				<option value=3>3</option>
+				<option value=4>4</option>
+				<option value=5>5</option>
+				<option value=6>6</option>
+				<option value=7>7</option>
+				<option value=8>8</option>
+				<option value=9>9</option>
+				<option value=10>10</option>
+				</select> 
+		</span> 
+		</div> 
+		</div> 
+<div style="right:-830px;" class="contactusdiyou">
+	<div class="hoverbtn" id = 'open'  >
+		<span>小</span><span>区</span><span>属</span><span>性</span>
+		<img class="hoverimg" src="images/hoverbtnbg.gif" height="9" width="13">
+	</div>
+	<div class="hoverbtn" id = 'close' style = 'display: none;'>
+		<span>小</span><span>区</span><span>属</span><span>性</span>
+		<img class="hoverimg" src="images/hoverbtnbg1.gif" height="9" width="13">
+	</div>
+
+	   <div class="conter" style="position:absolute;height:800px;width:650px;left:0px">	 
+	   
+		<ul id="myTab" class="nav nav-tabs" >
+		<li class="active"><a href="#container2" data-toggle="tab">职住信息</a></li>
+		<li><a href="#container3" data-toggle="tab">个体活动空间指标</a></li>
+		<li><a href="#container4" data-toggle="tab">群体活动空间指标</a></li>
+		<li><a href="#cont5" data-toggle="tab">空间关联</a></li>
+		</ul>
+		 	<div id="myTabContent" class="tab-content">	 
+		<div class="tab-pane fade in active" id="container2" style="position:absolute;height:700px;width:630px"></div>
+		<div class="tab-pane fade" id="container3" style="position:absolute;height:700px;width:630px"></div>
+		<div class="tab-pane fade" id="container4" style="position:absolute;height:700px;width:630px"></div>
+		<div class="tab-pane fade" id="cont5" style="position:absolute;height:700px;width:630px">
+		<div id="container5" style="position:absolute;height:700px;width:630px"></div>
+		<input class="btn btn-info" id ='interactmapshow' type="button" value="显示空间关联" style="display: none;position:absolute;width:120px;top:5px;right:20px;z-index:10">
+		<input class="btn btn-info" id ='interactmapshow2' type="button" value="还原" style="display: none;position:absolute;width:120px;top:5px;right:20px;z-index:10">
+		   </div>
+		 </div>  
+</div> 
+</div>
+<div style="position:absolute;top:-130px;height:130px;width:300px;left:300px;z-index:999" class="heatmapsetting">
+	<div class="hoverbtn" id = 'open1'  style = 'display: none;'>
+		<span>热</span><span>力</span><span>图</span><span>设</span><span>置</span>
+		<span><img class="hoverimg1" src="images/hoverbtnbg2.gif" height="13" width="9"></span>
+	</div>
+		<div class="hoverbtn" id = 'close1'  style = 'display: none;'>
+		<span>热</span><span>力</span><span>图</span><span>设</span><span>置</span>
+		<span><img class="hoverimg1" src="images/hoverbtnbg3.gif" height="13" width="9"></span>
+	</div>
+<div id="pointSize" style="position:absolute;top:30px;width:150px;left:120px" class="slider"></div>
+<span id="pointSizetext" style="font-family:微软雅黑;color:rgb(18,89,147);font-weight:bold;position:absolute;top:27px;width:150px;left:-5px;text-align:center">点大小:15</span>
+
+
+<div id="blurSize" style="position:absolute;top:60px;width:150px;left:120px" class="slider"></div>
+<span id="blurSizetext" style="font-family:微软雅黑;color:rgb(18,89,147);font-weight:bold;position:absolute;top:57px;width:150px;left:-5px;text-align:center">影响范围:6</span>
+
+
+<div id="vmapSize" style="position:absolute;top:90px;width:150px;left:120px" class="slider"></div>
+<span id="vmapSizetext" style="font-family:微软雅黑;color:rgb(18,89,147);font-weight:bold;position:absolute;top:87px;width:150px;left:-5px;text-align:center">颜色深浅:1</span>
+
+</div>
+
+<div style="position:absolute;top:300px;height:200px;width:250px;left:0px;z-index:999;display: none" class="dbscansetting" >
+<span style="position:absolute;font-family:微软雅黑;color:rgb(18,89,147);font-weight:bold;position:absolute;left:10px;top:200px;text-align:center">DBSCAN参数设置</span>
+
+<div id="hotspotcdf" style="position:absolute;left:30px;height:150px;top:40px" class="slider"></div>
+<span style="position:absolute;font-family:微软雅黑;color:rgb(18,89,147);font-weight:bold;position:absolute;left:10px;top:0px;text-align:left">热点置信度</span>
+<span id = 'hotspotvalue' style="position:absolute;font-family:微软雅黑;color:rgb(18,89,147);font-weight:bold;position:absolute;left:26px;top:15px;text-align:center">95%</span>
+
+<div id="eps" style="position:absolute;left:90px;height:150px;top:40px" class="slider"></div>
+<span style="position:absolute;font-family:微软雅黑;color:rgb(18,89,147);font-weight:bold;position:absolute;left:86px;top:0px;text-align:center">搜索半径</span>
+<span id = 'epsvalue' style="position:absolute;font-family:微软雅黑;color:rgb(18,89,147);font-weight:bold;position:absolute;left:86px;top:15px;text-align:center">500m</span>
+
+<div id="rate" style="position:absolute;left:150px;height:150px;top:40px" class="slider"></div>
+<span style="position:absolute;font-family:微软雅黑;color:rgb(18,89,147);font-weight:bold;position:absolute;left:146px;top:0px;text-align:center">比例</span>
+<span id = 'ratevalue' style="position:absolute;font-family:微软雅黑;color:rgb(18,89,147);font-weight:bold;position:absolute;left:146px;top:15px;text-align:center">50%</span>
+</div>
+<script type="text/javascript">
+$(function() {
+	$("#open").click(function() {
+		$(".hoverimg").attr("src","images/hoverbtnbg1.gif");
+
+		$('.contactusdiyou').animate({right:'-200px'},300); 
+		$("#open").hide()
+		$("#close").show()
+	});
+	$("#close").click(function() {
+		$(".hoverimg").attr("src","images/hoverbtnbg.gif");
+		$('.contactusdiyou').animate({right:'-830px'},300,function(){});
+
+		$("#open").show()
+		$("#close").hide()
+	});
+	$("#open1").click(function() {
+		$(".hoverimg1").attr("src","images/hoverbtnbg3.gif");
+		$('.heatmapsetting').animate({top:'0'},300); 
+		$("#open1").hide()
+		$("#close1").show()
+	})
+	$("#close1").click(function() {
+		$(".hoverimg1").attr("src","images/hoverbtnbg2.gif");
+		$('.heatmapsetting').animate({top:'-130px'},300);
+		$("#open1").show()
+		$("#close1").hide()
+})
+})
+
+
+</script>
+
+
+</body>
+</html>
